@@ -27,7 +27,7 @@ public class FrontEndController {
         return "service";
     }
 
-    @PostMapping("/add-carService")
+    @PostMapping("/add-service")
     public String addOperation(@ModelAttribute CarService carService) {
         this.carService = carService;
         return "redirect:/service";

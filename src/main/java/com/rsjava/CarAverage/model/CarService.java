@@ -15,9 +15,16 @@ public class CarService {
     public CarService() {
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     public CarService(String link) {
         this.link = link;
-
     }
 
     //liczba stron
@@ -25,7 +32,7 @@ public class CarService {
         int pages = 0;
 
         try {
-            Document documentPage = Jsoup.connect(link + 1).get();
+            Document documentPage = Jsoup.connect(link).get();
             Elements elements = documentPage.getElementsByClass("page");
             if (elements.size() != 0) {
                 pages = Integer.valueOf(elements.get(elements.size() - 1).text());
@@ -46,7 +53,7 @@ public class CarService {
         for (int i = 1; i <= numberOfPages(); i++) {
             Document document = null;
             try {
-                document = Jsoup.connect(link + i).get();
+                document = Jsoup.connect(link + "&page=" + i).get();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -87,14 +94,21 @@ public class CarService {
         for (Double d : prices()) {
             average += d;
         }
-        return average / prices().size();
+        return rounding(average / prices().size());
     }
 
     public double getMinPrice(){
-        return   Collections.min(prices());
+        return   rounding(Collections.min(prices()));
     }
 
     public double getMaxPrice(){
-        return Collections.max(prices());
+        return rounding(Collections.max(prices()));
+    }
+
+    private double rounding (double number){
+        number *=100;
+        number = Math.round(number);
+        number /= 100;
+        return number;
     }
 }
