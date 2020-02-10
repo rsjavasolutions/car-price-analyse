@@ -24,6 +24,7 @@ public class FrontEndController {
         map.put("showAverage", carService.getAverage());
         map.put("showMin", carService.getMinPrice());
         map.put("showMax", carService.getMaxPrice());
+        map.put("showMedian", carService.getMedian());
         return "service";
     }
 

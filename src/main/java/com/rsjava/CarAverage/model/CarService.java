@@ -19,6 +19,7 @@ public class CarService {
         return link;
     }
 
+
     public void setLink(String link) {
         this.link = link;
     }
@@ -97,16 +98,36 @@ public class CarService {
         return rounding(average / prices().size());
     }
 
-    public double getMinPrice(){
-        return   rounding(Collections.min(prices()));
+    public double getMedian() {
+        double med = 0;
+        List<Double> doubleList = new ArrayList<>();
+        doubleList = prices();
+        Collections.sort(doubleList);
+
+        if (isOdd(doubleList.size())) {
+            med = doubleList.get(doubleList.size() / 2);
+        } else {
+            med = (doubleList.get(doubleList.size() / 2) + doubleList.get((doubleList.size()/2 )-1)) / 2.0;
+        }
+        return rounding(med);
     }
 
-    public double getMaxPrice(){
+    public double getMinPrice() {
+        return rounding(Collections.min(prices()));
+    }
+
+    public double getMaxPrice() {
         return rounding(Collections.max(prices()));
     }
 
-    private double rounding (double number){
-        number *=100;
+
+    private boolean isOdd(int a) {
+        return (a & 1) == 1;
+
+    }
+
+    private double rounding(double number) {
+        number *= 100;
         number = Math.round(number);
         number /= 100;
         return number;
