@@ -1,19 +1,97 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE HTML>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Car Average</title>
+	<meta charset="utf-8" />
+	<title>Darmowa wycena auta</title>
+	<meta name="description" content="Serwis umożliwia darmową wycenę Twojego auta." />
+	<meta name="keywords" content="motoryzacja, handel, wycena, auto-handel, serdnia cena" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<style>
+
+	body
+	{
+	font-family: 'Lato', sans-serif;
+	}
+
+	#container
+	{
+		width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+		font-family: 'Lato', sans-serif;
+
+	}
+	#logo
+	{
+		background-color: black;
+		color: white;
+		text-align: center;
+		padding: 15px;
+		font-size: 20px;
+			
+	}
+	#nav
+	{
+		float: left;
+		background-color: lightgray;
+		width: 120px;
+		min-height: 620px;
+		padding: 10px;
+	}
+	#content
+	{
+		float: left;
+		padding: 20px;
+		width: 640px;
+	}
+	#ad
+	{
+		float: left;
+		width: 160px;
+		min-height: 620px;
+		padding: 10px;
+		background-color: lightgray;
+	}
+	#footer
+	{
+		clear: both;
+		background-color: black;
+		color: white;
+		text-align: center;
+		padding: 20px;
+	}	
+	</style>
 </head>
+
 <body>
+	<div id="container">
+		<div id="logo">
+			<h1>Darmowa wycena Twojego auta</h1>
+		</div>
+	
+		<div id="nav">
+			<br />
+		</div>
+		
+		<div id="content">
+			<center><img src="steps.jpg" wihdth="800" height="450">
 
-<form th:action ="@{/add-service}" th:object="${newService}" method="post">
+				<form th:action="@{/add-service}" th:object="${newService}" method="post">
+					<input type="text" autocomplete="off" th:field="*{link}">
+					<p><input type="submit" value="Generuj"></p>
+				</form>
+			</center>
+		</div>
 
-    <img src="instruction.jpg">
-    <p>Ustaw swoje kryteria i Wklej url z otomoto:<input type="text" autocomplete="off"  th:field="*{link}"></p>
-
-    <p><input type="submit" value="Generuj"></p>
-
-</form>
+		<div id="ad">
+		<a href="https://studiomarzenfoto.com/"><img src="adstudio.jpg" alt="Studio marzeń"></a>
+		</div>
+		
+		<div id="footer">
+			RS Java Solutions - All rights reserved
+		</div>
+	</div>
 
 </body>
 </html>

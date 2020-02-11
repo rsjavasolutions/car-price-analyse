@@ -19,7 +19,6 @@ public class CarService {
         return link;
     }
 
-
     public void setLink(String link) {
         this.link = link;
     }
@@ -119,7 +118,6 @@ public class CarService {
     public double getMaxPrice() {
         return rounding(Collections.max(prices()));
     }
-
 
     private boolean isOdd(int a) {
         return (a & 1) == 1;

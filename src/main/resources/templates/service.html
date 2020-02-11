@@ -1,28 +1,103 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE HTML>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Service</title>
+	<meta charset="utf-8" />
+	<title>Darmowa wycena auta</title>
+	<meta name="description" content="Serwis umożliwia darmową wycenę Twojego auta." />
+	<meta name="keywords" content="motoryzacja, handel, wycena, auto-handel, serdnia cena" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <style>
+
+	body
+	{
+	font-family: 'Lato', sans-serif;
+	}
+
+	#container
+	{
+		width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+    }
+	#logo
+	{
+		background-color: black;
+		color: white;
+		text-align: center;
+		padding: 15px;
+		font-size: 20px;
+			
+	}
+	#nav
+	{
+		float: left;
+		background-color: lightgray;
+		width: 120px;
+		min-height: 620px;
+		padding: 10px;
+	}
+	#content
+	{
+		float: left;
+		padding: 20px;
+		width: 640px;
+	}
+	#ad
+	{
+		float: left;
+		width: 160px;
+		min-height: 620px;
+		padding: 10px;
+		background-color: lightgray;
+	}
+	#footer
+	{
+		clear: both;
+		background-color: black;
+		color: white;
+		text-align: center;
+		padding: 20px;
+	}	
+	</style>
 </head>
+
 <body>
-<h1>Liczba wyników</h1>
-<h2 th:text="${showElements}"/>
 
-<h1>najniższa cena</h1>
-<h2 th:text="${showMin}" />
+<div id="container">
+    <div id="logo">
+        <h1>Darmowa wycena Twojego auta</h1>
+    </div>
 
-<h1>najwyższa cena</h1>
-<h3 th:text="${showMax}" />
+    <div id="nav">
+        <br/>
+    </div>
 
+    <div id="content">
 
-<h1>średnia aretmetyczna cen</h1>
-<h2 th:text="${showAverage}" />
+        <h1>Liczba wyników: <a th:text="${showElements}"/></h1>
 
-<h1>Mediana cen</h1>
-<h2 th:text="${showMedian}" />
+        <h2>Najniższa cena: <a th:text="${showMin}"/></h2>
 
+        <h2>Najwyższa cena: <a th:text="${showMax}"/></h2>
 
-<a href="/">Powrót do strony głównej</a>
+        <h2>Średnia arytmetyczna cen: <a th:text="${showAverage}"/></h2>
+
+        <h2>Mediana cen: <a th:text="${showMedian}"/></h2>
+
+        <a href="/">Powrót do strony głównej</a>
+
+    </div>
+
+    <div id="ad">
+        <a href="https://studiomarzenfoto.com/"><img src="adstudio.jpg" alt="Studio marzeń"></a>
+    </div>
+
+    <div id="footer">
+        RS Java Solutions - All rights reserved
+    </div>
+
+</div>
 
 </body>
 </html>
