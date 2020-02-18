@@ -94,7 +94,7 @@ public class CarService {
 
     public double getMedian() {
         double med = 0;
-        List<Double> doubleList = new ArrayList<>();
+        List<Double> doubleList;
         doubleList = prices();
         Collections.sort(doubleList);
 
