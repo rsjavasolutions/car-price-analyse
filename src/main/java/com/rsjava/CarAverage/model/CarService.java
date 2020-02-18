@@ -3,13 +3,13 @@ package com.rsjava.CarAverage.model;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class CarService {
 
     private String link;
@@ -22,10 +22,6 @@ public class CarService {
     }
 
     public void setLink(String link) {
-        this.link = link;
-    }
-
-    public CarService(String link) {
         this.link = link;
     }
 
@@ -47,8 +43,7 @@ public class CarService {
         return pages;
     }
 
-    //pobieram wszystie elementy z karzdej strony
-    public List<Elements> allPagesElements() {
+    private List<Elements> elementsFromEachPage() {
         Elements elements = null;
         List<Elements> allElements = new ArrayList<>();
 
@@ -61,16 +56,13 @@ public class CarService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
         return allElements;
     }
 
-    //dodaję elementy ze wszystkich stron do jednej listy
-    private List<String> allElements() {
+    private List<String> allElementsOnEachPage() {
         List<String> elementsList = new LinkedList<>();
-        for (Elements elements1 : allPagesElements()) {
+        for (Elements elements1 : elementsFromEachPage()) {
             for (int i = 0; i < elements1.size(); i++) {
                 elementsList.add(elements1.get(i).text());
             }
@@ -78,9 +70,8 @@ public class CarService {
         return elementsList;
     }
 
-    //konwertuje na listę cen
     private List<Double> prices() {
-        List<String> originalStrings = allElements();
+        List<String> originalStrings = allElementsOnEachPage();
 
         return originalStrings.stream()
                 .map(s -> s.replace(" ", ""))
@@ -110,7 +101,8 @@ public class CarService {
         if (isOdd(doubleList.size())) {
             med = doubleList.get(doubleList.size() / 2);
         } else {
-            med = (doubleList.get(doubleList.size() / 2) + doubleList.get((doubleList.size()/2 )-1)) / 2.0;
+            med = (doubleList.get(doubleList.size() / 2)
+                    + doubleList.get((doubleList.size() / 2) - 1)) / 2.0;
         }
         return rounding(med);
     }

@@ -1,5 +1,6 @@
 package com.rsjava.CarAverage.controller;
 
+
 import com.rsjava.CarAverage.model.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ public class FrontEndController {
 
     @Autowired
     private CarService carService;
-
 
     @GetMapping("/")
     public String getCurrency(ModelMap map) {
