@@ -3,11 +3,13 @@ package com.rsjava.CarAverage.model;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Component
 public class CarService {
 
     private String link;
@@ -46,7 +48,7 @@ public class CarService {
     }
 
     //pobieram wszystie elementy z karzdej strony
-    private List<Elements> allPagesElements() {
+    public List<Elements> allPagesElements() {
         Elements elements = null;
         List<Elements> allElements = new ArrayList<>();
 
@@ -54,11 +56,13 @@ public class CarService {
             Document document = null;
             try {
                 document = Jsoup.connect(link + "&page=" + i).get();
+                elements = document.getElementsByClass("offer-price__number ds-price-number");
+                allElements.add(elements);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            elements = document.getElementsByClass("offer-price__number ds-price-number");
-            allElements.add(elements);
+
+
         }
         return allElements;
     }
