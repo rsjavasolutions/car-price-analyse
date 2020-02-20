@@ -71,8 +71,9 @@ public class CarService {
         List<String> originalStrings = allElementsOnEachPage();
 
         return originalStrings.stream()
-                .map(s -> s.replace(" ", ""))
-                .map(t -> t.substring(0, t.indexOf("P")))
+                .map(x -> x.replace(" ", ""))
+                .map(x -> x.replace(",", "."))
+                .map(x -> x.substring(0, x.indexOf("P")))
                 .map(x -> Double.parseDouble(x))
                 .collect(Collectors.toList());
     }
