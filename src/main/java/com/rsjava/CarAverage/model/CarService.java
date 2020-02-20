@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Service
 public class CarService {
 
     private String link;
@@ -43,7 +42,7 @@ public class CarService {
         return pages;
     }
 
-    private List<Elements> elementsFromEachPage() {
+    private List<Elements> elementsFromEachPage()  {
         Elements elements = null;
         List<Elements> allElements = new ArrayList<>();
 

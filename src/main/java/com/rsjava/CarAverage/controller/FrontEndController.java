@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class FrontEndController {
 
-    @Autowired
     private CarService carService;
 
     @GetMapping("/")
     public String getCurrency(ModelMap map) {
-        map.put("newService", carService);
+        map.put("newService", new CarService());
         return "index";
     }
 
