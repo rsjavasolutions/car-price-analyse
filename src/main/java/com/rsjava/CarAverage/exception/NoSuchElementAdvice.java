@@ -6,13 +6,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.NoSuchElementException;
+
 @ControllerAdvice
-public class IllegalArgumentAdvice {
+public class NoSuchElementAdvice {
 
     @ResponseBody
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public String invalidUrlHandler (IllegalArgumentException ex){
-        return "Incorrect URL, please try again";
+
+    public String oSuchElementHandler(NoSuchElementException ex){
+       return ex.getMessage();
     }
 }

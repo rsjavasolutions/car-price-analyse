@@ -1,5 +1,6 @@
 package com.rsjava.CarAverage.model;
 
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
