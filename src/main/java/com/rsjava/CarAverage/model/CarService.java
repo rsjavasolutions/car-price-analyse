@@ -23,7 +23,7 @@ public class CarService {
         this.link = link;
     }
 
-    private int numberOfPages() throws IllegalArgumentException {
+    private int numberOfPages(){
         int pages = 0;
 
         try {
@@ -40,7 +40,7 @@ public class CarService {
         return pages;
     }
 
-    private List<Elements> elementsFromEachPage() throws IllegalArgumentException {
+    private List<Elements> elementsFromEachPage(){
         Elements elements = null;
         List<Elements> allElements = new ArrayList<>();
 
@@ -67,7 +67,7 @@ public class CarService {
         return elementsList;
     }
 
-    private List<Double> prices() {
+    private List<Double> pricesParsedToDouble() {
         List<String> originalStrings = allElementsOnEachPage();
 
         return originalStrings.stream()
@@ -79,21 +79,21 @@ public class CarService {
     }
 
     public int getNumberOfElements() {
-        return prices().size();
+        return pricesParsedToDouble().size();
     }
 
     public double getAverage() {
         double average = 0;
-        for (Double d : prices()) {
+        for (Double d : pricesParsedToDouble()) {
             average += d;
         }
-        return rounding(average / prices().size());
+        return rounding(average / pricesParsedToDouble().size());
     }
 
     public double getMedian() {
         double med = 0;
         List<Double> doubleList;
-        doubleList = prices();
+        doubleList = pricesParsedToDouble();
         Collections.sort(doubleList);
 
         if (isOdd(doubleList.size())) {
@@ -106,16 +106,15 @@ public class CarService {
     }
 
     public double getMinPrice() {
-        return rounding(Collections.min(prices()));
+        return rounding(Collections.min(pricesParsedToDouble()));
     }
 
     public double getMaxPrice() {
-        return rounding(Collections.max(prices()));
+        return rounding(Collections.max(pricesParsedToDouble()));
     }
 
     private boolean isOdd(int a) {
         return (a & 1) == 1;
-
     }
 
     private double rounding(double number) {
