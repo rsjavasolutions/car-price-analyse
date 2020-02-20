@@ -3,7 +3,6 @@ package com.rsjava.CarAverage.model;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.*;
@@ -24,8 +23,7 @@ public class CarService {
         this.link = link;
     }
 
-    //liczba stron
-    private int numberOfPages() {
+    private int numberOfPages() throws IllegalArgumentException {
         int pages = 0;
 
         try {
@@ -42,7 +40,7 @@ public class CarService {
         return pages;
     }
 
-    private List<Elements> elementsFromEachPage()  {
+    private List<Elements> elementsFromEachPage() throws IllegalArgumentException {
         Elements elements = null;
         List<Elements> allElements = new ArrayList<>();
 
