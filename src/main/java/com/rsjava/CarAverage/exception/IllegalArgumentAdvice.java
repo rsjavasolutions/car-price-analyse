@@ -13,6 +13,6 @@ public class IllegalArgumentAdvice {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public String invalidUrlHandler (IllegalArgumentException ex){
-        return "Incorrect URL, please try again";
+        return "Incorrect URL. Please try again";
     }
 }
