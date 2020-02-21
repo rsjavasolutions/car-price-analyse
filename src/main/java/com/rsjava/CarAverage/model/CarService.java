@@ -40,7 +40,7 @@ public class CarService {
         return pages;
     }
 
-    private List<Elements> elementsFromEachPage(){
+    private List<Elements> elementsFromEachPage() {
         Elements elements = null;
         List<Elements> allElements = new ArrayList<>();
 
@@ -54,8 +54,13 @@ public class CarService {
                 e.printStackTrace();
             }
         }
-        return allElements;
+        if (allElements.size() != 0) {
+            return allElements;
+        }
+       else return null;
     }
+
+
 
     private List<String> allElementsOnEachPage() {
         List<String> elementsList = new LinkedList<>();
