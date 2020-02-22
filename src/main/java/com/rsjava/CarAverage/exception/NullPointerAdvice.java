@@ -16,5 +16,4 @@ public class NullPointerAdvice {
     public String nullPointerHandler(NullPointerException ex){
         return  "Incorrect URL or no results. Please try again";
     }
-
 }

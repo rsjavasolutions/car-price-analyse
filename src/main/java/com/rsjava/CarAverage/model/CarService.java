@@ -60,8 +60,6 @@ public class CarService {
        else return null;
     }
 
-
-
     private List<String> allElementsOnEachPage() {
         List<String> elementsList = new LinkedList<>();
         for (Elements elements1 : elementsFromEachPage()) {
